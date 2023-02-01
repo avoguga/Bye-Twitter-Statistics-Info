@@ -56,34 +56,6 @@
       <label class="toggle-slider" for="toggle-checkbox"></label>
     </div>
     <p id="message">Hello again</p>
-
-    <script>
-      const toggleCheckbox = document.querySelector("#toggle-checkbox");
-      const message = document.querySelector("#message");
-
-      toggleCheckbox.addEventListener("change", function () {
-        if (toggleCheckbox.checked) {
-          message.textContent = "Bye";
-          localStorage.setItem("toggleValue", "checked");
-          twitterScript();
-        } else {
-          localStorage.setItem("toggleValue", "unchecked");
-          message.textContent = "Hello again";
-          stopTwitterScript();
-        }
-      });
-
-      // Check the saved value from local storage
-      const toggleValue = localStorage.getItem("toggleValue");
-      if (toggleValue === "checked") {
-        toggleCheckbox.checked = true;
-        message.textContent = "Bye";
-      } else {
-        toggleCheckbox.checked = false;
-        message.textContent = "Hello again";
-      }
-    </script>
-
-    <script src="twitterScript.js"></script>
+    <script src="popup.js"></script>
   </body>
 </html>
