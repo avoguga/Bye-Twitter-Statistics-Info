@@ -1,17 +1,15 @@
 {
-    "manifest_version": 3,
-    "version": "0.0.1",
-    "name": "Bye Statistics Info",
-    "description": "Removes the statistics info from Twitter Timeline",
-    "author": "Gustavo Henrique",
-    "action": {
-        "default_title": "Bye Statistics Info",
-        "default_icon": "icon.png",
-        "default_popup": "popup.html"
-    },
-    "permissions": [
-        "activeTab",
-        "storage",
-        "scripting"
-    ]
+  "manifest_version": 3,
+  "version": "0.0.1",
+  "name": "Bye Statistics Info",
+  "description": "Removes the statistics info from Twitter Timeline",
+  "author": "Gustavo Henrique",
+  "action": {
+    "default_title": "Bye Statistics Info",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "storage", "scripting", "tabs"],
+  "host_permissions": ["https://twitter.com/*"],
+  "content_scripts": [{ "matches": ["<all_urls>"], "js": ["content.js"] }]
 }
