@@ -2,6 +2,7 @@
 let twitterScriptObserver = null;
 
 const twitterScript = () => {
+  console.log("Twitter script started");
   let body = document.body;
   let views = document.querySelectorAll('[aria-label*="Exibir estatísticas do Tweet"]');
   views.forEach((view) => {
@@ -25,6 +26,7 @@ const twitterScript = () => {
 
 // Stop script
 const stopTwitterScript = () => {
+  console.log("Twitter script stopped");
   if (twitterScriptObserver) {
     twitterScriptObserver.disconnect();
     twitterScriptObserver = null;

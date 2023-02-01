@@ -1,5 +1,5 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "version": "0.0.1",
     "name": "Bye Statistics Info",
     "description": "Removes the statistics info from Twitter Timeline",
@@ -8,10 +8,5 @@
         "default_title": "Bye Statistics Info",
         "default_popup": "index.html",
         "default_icon": "icon.png"
-    },
-    "permissions": [
-        "tabs",
-        "http://*/*",
-        "https://*/*"
-    ]
+    }
 }

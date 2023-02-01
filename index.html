@@ -64,8 +64,10 @@
         toggleCheckbox.addEventListener("change", function () {
           if (toggleCheckbox.checked) {
             message.textContent = "Bye";
+            twitterScript();
           } else {
             message.textContent = "Hello again";
+            stopTwitterScript();
           }
         });
       </script>
