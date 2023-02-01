@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bye Statistics Info</title>
-</head>
-<body>
-    <button>Bye</button>
-    <button>Hello Again</button>
+    <style>
+      .toggle-container {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        height: 34px;
+      }
+
+      .toggle-container input[type="checkbox"] {
+        display: none;
+      }
+
+      .toggle-container .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: 0.4s;
+      }
+
+      .toggle-container .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.4s;
+      }
+
+      .toggle-container input[type="checkbox"]:checked + .toggle-slider {
+        background-color: #2196f3;
+      }
+
+      .toggle-container input[type="checkbox"]:checked + .toggle-slider:before {
+        transform: translateX(26px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toggle-container">
+        <input type="checkbox" id="toggle-checkbox" />
+        <label class="toggle-slider" for="toggle-checkbox"></label>
+      </div>
+      <p id="message">Hello again</p>
+  
+      <script>
+        const toggleCheckbox = document.querySelector("#toggle-checkbox");
+        const message = document.querySelector("#message");
+  
+        toggleCheckbox.addEventListener("change", function () {
+          if (toggleCheckbox.checked) {
+            message.textContent = "Bye";
+          } else {
+            message.textContent = "Hello again";
+          }
+        });
+      </script>
 
     <script src="twitterScript.js"></script>
-</body>
+  </body>
 </html>

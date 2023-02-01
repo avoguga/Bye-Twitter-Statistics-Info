@@ -6,7 +6,7 @@
     "author": "Gustavo Henrique",
     "browser_action": {
         "default_title": "Bye Statistics Info",
-        "default_popup": "popup.html",
+        "default_popup": "index.html",
         "default_icon": "icon.png"
     },
     "permissions": [
