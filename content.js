@@ -2,7 +2,7 @@ const toggleValue = localStorage.getItem("toggleValue");
 
 let twitterScriptObserver = null;
 
-const twitterScript = () => {
+const twitterScript = async () => {
   console.log("Twitter script started");
   let body = document.body;
   let views = document.querySelectorAll(
@@ -29,8 +29,7 @@ const twitterScript = () => {
   twitterScriptObserver.observe(body, { childList: true, subtree: true });
 };
 
-// Stop script
-const stopTwitterScript = () => {
+const stopTwitterScript = async () => {
   console.log("Twitter script stopped");
   localStorage.setItem("toggleValue", "unchecked");
   if (twitterScriptObserver) {
