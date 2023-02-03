@@ -1,35 +1,26 @@
 const toggleValue = localStorage.getItem("toggleValue");
-
 let twitterScriptObserver = null;
 
-const twitterScript = async () => {
+const removeTweetViews = () => {
+  const views = document.querySelectorAll('[aria-label*="estatísticas do Tweet"]');
+  const viewsEn = document.querySelectorAll('[aria-label*="Tweet analytics"]');
+  views.forEach(view => view.parentElement.remove());
+  viewsEn.forEach(view => view.parentElement.remove());
+};
+
+const startTwitterScript = () => {
   console.log("Twitter script started");
-  let body = document.body;
-  let views = document.querySelectorAll(
-    '[aria-label*="estatísticas do Tweet"]'
-  );
-  views.forEach((view) => {
-    view.parentElement.remove();
-  });
-
+  removeTweetViews();
   twitterScriptObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      let addedNodes = mutation.addedNodes;
-
-      for (let i = 0; i < addedNodes.length; i++) {
-        let node = addedNodes[i];
-        let views = node.querySelectorAll(
-          '[aria-label*="estatísticas do Tweet"]'
-        );
-        views.forEach((view) => view.parentElement.remove());
-      }
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => removeTweetViews());
     });
   });
   localStorage.setItem("toggleValue", "checked");
-  twitterScriptObserver.observe(body, { childList: true, subtree: true });
+  twitterScriptObserver.observe(document.body, { childList: true, subtree: true });
 };
 
-const stopTwitterScript = async () => {
+const stopTwitterScript = () => {
   console.log("Twitter script stopped");
   localStorage.setItem("toggleValue", "unchecked");
   if (twitterScriptObserver) {
@@ -39,7 +30,7 @@ const stopTwitterScript = async () => {
 };
 
 if (toggleValue === "checked") {
-  twitterScript();
+  startTwitterScript();
 } else {
   stopTwitterScript();
 }
